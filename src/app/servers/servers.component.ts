@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ServerComponent } from '../server/server.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-servers',
   standalone: true,
-  imports: [ServerComponent],
+  imports: [ServerComponent, FormsModule],
   templateUrl: './servers.component.html',
   styleUrl: './servers.component.css',
 })
@@ -20,7 +21,7 @@ export class ServersComponent {
   }
 
   onCreateServer(): void {
-    this.serverCreationStatus = 'Server was created!';
+    this.serverCreationStatus = `Server was created! Name is ${this.serverName}`;
   }
 
   onUpdateServerName(event: Event): void {
