@@ -5,10 +5,15 @@ import { ServerComponent } from '../server/server.component';
   selector: 'app-servers',
   standalone: true,
   imports: [ServerComponent],
-  template: `
-    <app-server></app-server>
-    <app-server></app-server>
-  `,
+  templateUrl: './servers.component.html',
   styleUrl: './servers.component.css',
 })
-export class ServersComponent {}
+export class ServersComponent {
+  allowNewServer: boolean = false;
+
+  constructor() {
+    setTimeout(() => {
+      this.allowNewServer = true;
+    }, 2000);
+  }
+}
