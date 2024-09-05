@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { ServerComponent } from '../server/server.component';
 import { FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-servers',
   standalone: true,
-  imports: [ServerComponent, FormsModule, NgIf],
+  imports: [ServerComponent, FormsModule, CommonModule],
   templateUrl: './servers.component.html',
   styleUrl: './servers.component.css',
 })
@@ -15,6 +15,7 @@ export class ServersComponent {
   serverCreationStatus: string = 'No server was created!';
   serverName: string = '';
   serverCreated: boolean = false;
+  servers: string[] = ['TestServer', 'TestServer2'];
 
   constructor() {
     setTimeout(() => {
@@ -24,6 +25,7 @@ export class ServersComponent {
 
   onCreateServer(): void {
     this.serverCreationStatus = `Server was created! Name is ${this.serverName}`;
+    this.servers.push(this.serverName);
     this.serverCreated = true;
   }
 
