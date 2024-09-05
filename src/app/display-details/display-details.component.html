@@ -1,0 +1,15 @@
+<button class="btn btn-primary" (click)="toggleDetails()">
+  Display Details
+</button>
+<p [ngClass]="{ hidden: !showDetails }">{{ details }}</p>
+@for (buttonClickLog of buttonClickLogs; track buttonClickLog.count; let idx =
+$index) {
+<p
+  [ngStyle]="{ backgroundColor: idx >= 4 ? 'blue' : '' }"
+  [ngClass]="{ isBlue: idx >= 4 }"
+>
+  {{ buttonClickLog.content }}
+</p>
+} @empty {
+<p>You didn't click on the button yet...</p>
+}
