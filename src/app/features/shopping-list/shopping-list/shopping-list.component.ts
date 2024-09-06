@@ -8,4 +8,6 @@ import { ShoppingEditComponent } from '../shopping-edit/shopping-edit.component'
   templateUrl: './shopping-list.component.html',
   styleUrl: './shopping-list.component.css',
 })
-export class ShoppingListComponent {}
+export class ShoppingListComponent {
+  ingredients = [];
+}
