@@ -17,5 +17,7 @@ import { ServerElementComponent } from './server-element/server-element.componen
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  serverElements: any[] = [];
+  serverElements = [
+    { type: 'server', name: 'Test Server', content: 'Just a test!' },
+  ];
 }
