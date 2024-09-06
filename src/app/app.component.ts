@@ -1,12 +1,32 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { ServersComponent } from './servers/servers.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ServersComponent],
+  selector: 'app-root',
+  imports: [CommonModule, FormsModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent {}
+export class AppComponent {
+  serverElements: any[] = [];
+  newServerName = '';
+  newServerContent = '';
+
+  onAddServer() {
+    this.serverElements.push({
+      type: 'server',
+      name: this.newServerName,
+      content: this.newServerContent,
+    });
+  }
+
+  onAddBlueprint() {
+    this.serverElements.push({
+      type: 'blueprint',
+      name: this.newServerName,
+      content: this.newServerContent,
+    });
+  }
+}
