@@ -8,4 +8,6 @@ import { RecipeItemComponent } from './recipe-item/recipe-item.component';
   templateUrl: './recipe-list.component.html',
   styleUrl: './recipe-list.component.css',
 })
-export class RecipeListComponent {}
+export class RecipeListComponent {
+  recipes = [];
+}
