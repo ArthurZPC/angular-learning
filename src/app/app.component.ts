@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { RecipesComponent } from './features/recipe-book/recipes/recipes.component';
 import { ShoppingListComponent } from './features/shopping-list/shopping-list/shopping-list.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,16 @@ import { ShoppingListComponent } from './features/shopping-list/shopping-list/sh
     HeaderComponent,
     RecipesComponent,
     ShoppingListComponent,
+    CommonModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'course-project';
+  loadedFeature = 'recipe';
+
+  onNavigate(feature: string) {
+    this.loadedFeature = feature;
+  }
 }
