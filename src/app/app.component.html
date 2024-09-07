@@ -1,9 +1,20 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <h3>This is an app!</h3>
-      <hr />
-      <app-servers></app-servers>
-    </div>
+<div class="row">
+  <div class="col-xs-12">
+    <app-game-control
+      (gameInProgress)="onGameTickCompleted($event)"
+      (gameStopped)="onGameStopped()"
+    ></app-game-control>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <app-odd
+      *ngFor="let oddNumber of oddNumbers"
+      [number]="oddNumber"
+    ></app-odd>
+    <app-even
+      *ngFor="let evenNumber of evenNumbers"
+      [number]="evenNumber"
+    ></app-even>
   </div>
 </div>
