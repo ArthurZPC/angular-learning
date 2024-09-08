@@ -1,12 +1,37 @@
 import { Component } from '@angular/core';
+import { AccountComponent } from './account/account.component';
+import { NewAccountComponent } from './new-account/new-account.component';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { ServersComponent } from './servers/servers.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ServersComponent],
+  imports: [RouterOutlet, AccountComponent, NewAccountComponent, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent {}
+export class AppComponent {
+  accounts = [
+    {
+      name: 'Master Account',
+      status: 'active',
+    },
+    {
+      name: 'Testaccount',
+      status: 'inactive',
+    },
+    {
+      name: 'Hidden Account',
+      status: 'unknown',
+    },
+  ];
+
+  onAccountAdded(newAccount: { name: string; status: string }) {
+    this.accounts.push(newAccount);
+  }
+
+  onStatusChanged(updateInfo: { id: number; newStatus: string }) {
+    this.accounts[updateInfo.id].status = updateInfo.newStatus;
+  }
+}
