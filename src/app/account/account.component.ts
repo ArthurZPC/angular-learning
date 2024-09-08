@@ -5,7 +5,7 @@ import { AccountsService } from '../accounts.service';
 @Component({
   selector: 'app-account',
   standalone: true,
-  providers: [LoggingService, AccountsService],
+  providers: [LoggingService],
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css'],
 })

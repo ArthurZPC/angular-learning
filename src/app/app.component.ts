@@ -9,7 +9,6 @@ import { AccountsService } from './accounts.service';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, AccountComponent, NewAccountComponent, CommonModule],
-  providers: [AccountsService],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
