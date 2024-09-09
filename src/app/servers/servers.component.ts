@@ -1,35 +1,22 @@
-import { Component } from '@angular/core';
-import { ServerComponent } from '../server/server.component';
-import { FormsModule } from '@angular/forms';
-import { CommonModule, NgIf } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { ServersService } from './servers.service';
+import { CommonModule } from '@angular/common';
+import { EditServerComponent } from './edit-server/edit-server.component';
+import { ServerComponent } from './server/server.component';
 
 @Component({
   selector: 'app-servers',
   standalone: true,
-  imports: [ServerComponent, FormsModule, CommonModule],
+  imports: [CommonModule, EditServerComponent, ServerComponent],
   templateUrl: './servers.component.html',
-  styleUrl: './servers.component.css',
+  styleUrls: ['./servers.component.css'],
 })
-export class ServersComponent {
-  allowNewServer: boolean = false;
-  serverCreationStatus: string = 'No server was created!';
-  serverName: string = '';
-  serverCreated: boolean = false;
-  servers: string[] = ['TestServer', 'TestServer2'];
+export class ServersComponent implements OnInit {
+  public servers: { id: number; name: string; status: string }[] = [];
 
-  constructor() {
-    setTimeout(() => {
-      this.allowNewServer = true;
-    }, 2000);
-  }
+  constructor(private serversService: ServersService) {}
 
-  onCreateServer(): void {
-    this.serverCreationStatus = `Server was created! Name is ${this.serverName}`;
-    this.servers.push(this.serverName);
-    this.serverCreated = true;
-  }
-
-  onUpdateServerName(event: Event): void {
-    this.serverName = (<HTMLInputElement>event.target).value;
+  ngOnInit() {
+    this.servers = this.serversService.getServers();
   }
 }
