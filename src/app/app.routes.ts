@@ -22,6 +22,6 @@ export const routes: Routes = [
       { path: ':id/edit', component: EditServerComponent },
     ],
   },
-  { path: '/not-found', component: PageNotFoundComponent },
+  { path: 'not-found', component: PageNotFoundComponent },
   { path: '**', redirectTo: 'not-found' },
 ];
