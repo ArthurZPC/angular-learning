@@ -20,9 +20,4 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   title = 'course-project';
-  loadedFeature = 'recipe';
-
-  onNavigate(feature: string) {
-    this.loadedFeature = feature;
-  }
 }

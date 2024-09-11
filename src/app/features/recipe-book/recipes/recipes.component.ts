@@ -4,11 +4,17 @@ import { RecipeDetailComponent } from '../recipe-detail/recipe-detail.component'
 import { Recipe } from '../recipe.model';
 import { CommonModule } from '@angular/common';
 import { RecipeService } from '../recipe.service';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-recipes',
   standalone: true,
-  imports: [RecipeListComponent, RecipeDetailComponent, CommonModule],
+  imports: [
+    RecipeListComponent,
+    RecipeDetailComponent,
+    CommonModule,
+    RouterOutlet,
+  ],
   providers: [RecipeService],
   templateUrl: './recipes.component.html',
   styleUrl: './recipes.component.css',
