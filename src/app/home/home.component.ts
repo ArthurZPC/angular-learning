@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { interval, Observable, Subscription } from 'rxjs';
+import { filter, interval, map, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     const customIntervalObservable = new Observable<number>((observer) => {
       let count = 0;
-      setInterval(() => {
+      const id = setInterval(() => {
         observer.next(count);
 
         if (count === 2) {
@@ -29,9 +29,19 @@ export class HomeComponent implements OnInit, OnDestroy {
 
         count++;
       }, 1000);
+
+      return () => {
+        clearInterval(id);
+        console.log('Interval cleared!');
+      };
     });
 
-    this.firstObsSubscription = customIntervalObservable.subscribe({
+    const roundObservable = customIntervalObservable.pipe(
+      filter((x) => x > 0),
+      map((x) => `Round: ${x + 1}`)
+    );
+
+    this.firstObsSubscription = roundObservable.subscribe({
       next: (t) => console.log(t),
       error: (e: Error) => {
         console.log(e);
