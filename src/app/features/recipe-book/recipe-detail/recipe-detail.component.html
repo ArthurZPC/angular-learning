@@ -35,7 +35,12 @@
             >
           </li>
           <li>
-            <a style="cursor: pointer" class="dropdown-item">Edit Recipe</a>
+            <a
+              [routerLink]="['/recipe', recipe.id, 'edit']"
+              style="cursor: pointer"
+              class="dropdown-item"
+              >Edit Recipe</a
+            >
           </li>
           <li>
             <a style="cursor: pointer" class="dropdown-item">Delete Recipe</a>
