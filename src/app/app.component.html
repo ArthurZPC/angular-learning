@@ -65,6 +65,27 @@
             rows="3"
           ></textarea>
           <p>Your reply: {{ answer }}</p>
+          <div class="form-check" *ngFor="let g of genders">
+            <!-- <input
+              type="radio"
+              class="form-check-input"
+              name="gender"
+              [value]="g"
+              [id]="'gender-' + g"
+            />
+            <label [for]="'gender-' + g" class="form-check-label">{{
+              g
+            }}</label> -->
+            <label class="form-check-label">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="gender"
+                [value]="g"
+              />
+              {{ g }}
+            </label>
+          </div>
         </div>
         <button class="btn btn-primary" [disabled]="!f.valid" type="submit">
           Submit
