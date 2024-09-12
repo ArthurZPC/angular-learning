@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <form class="was-validated" (ngSubmit)="onSubmit()" #f="ngForm">
-        <div id="user-data">
+        <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
           <div class="form-group">
             <label for="username">Username</label>
             <input
@@ -17,6 +17,13 @@
           <button class="btn btn-outline-secondary" type="button">
             Suggest an Username
           </button>
+          <p
+            *ngIf="!userData.valid && userData.touched"
+            class="form-text mb-2"
+            aria-describedby="username"
+          >
+            User data is invalid!
+          </p>
           <div class="form-group">
             <label for="email">Mail</label>
             <input
@@ -30,7 +37,7 @@
               #email="ngModel"
             />
             <div
-              class="invalid-feedback mb-2"
+              class="form-text mb-2"
               aria-describedby="email"
               *ngIf="!email.valid && email.touched"
             >
